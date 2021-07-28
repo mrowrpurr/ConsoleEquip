@@ -36,7 +36,7 @@ Function WearOutfit(string outfitName, Actor player) global
             player.EquipItem(itemsToEquip[index])
             index += 1
         endWhile
-        MiscUtil.PrintConsole("Switched to outfit \"" + outfitName"EquipCommand_Outfit:" + outfitName + "\"")
+        MiscUtil.PrintConsole("Switched to outfit \"" + outfitName + "\"")
     else
         MiscUtil.PrintConsole("equip: outfit not found \"" + outfitName + "\"")
     endIf

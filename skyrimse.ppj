@@ -6,12 +6,12 @@
     Output="Scripts" 
     Optimize="false" 
     Release="false" 
-    Zip="false"
-    Package="false"
+    Zip="true"
+    Package="true"
     Final="false">
     <Variables>
         <!-- Set the name of your mod: -->
-        <Variable Name="ModName" Value="CHANGE THE MOD NAME HERE" />
+        <Variable Name="ModName" Value="ConsoleEquip" />
         <!-- The folder where you store all of your mods -->
         <Variable Name="ModsFolder" Value="C:\[YOUR MODS FOLDER]" />
         <!-- Optional folder with additional source code for imports -->
