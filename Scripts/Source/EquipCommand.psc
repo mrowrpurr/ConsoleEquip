@@ -31,6 +31,10 @@ Function WearOutfit(string outfitName, Actor player) global
     Form[] itemsToEquip = StorageUtil.FormListToArray(player, "EquipCommand_Outfit:" + outfitName)
     if itemsToEquip.Length > 0
         player.UnequipAll()
+        Form[] equippedItems = PO3_SKSEFunctions.AddAllEquippedItemsToArray(player)
+        if equippedItems.Length > 0
+            player.UnequipAll()
+        endIf
         int index = 0
         while index < itemsToEquip.Length
             player.EquipItem(itemsToEquip[index])
