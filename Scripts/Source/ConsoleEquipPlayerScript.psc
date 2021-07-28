@@ -13,7 +13,3 @@ EndFunction
 Event OnEquipCommand(string eventName, string strArg, float numArg, Form sender)
     EquipCommand.Run(StringUtil.Split(strArg, " "), GetActorReference())
 EndEvent
-
-Event OnGoldCommand(string eventName, string strArg, float numArg, Form sender)
-    GoldCommand.Run(StringUtil.Split(strArg, " "), GetActorReference())
-EndEvent
