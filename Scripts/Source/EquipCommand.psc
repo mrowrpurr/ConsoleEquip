@@ -1,5 +1,8 @@
 Scriptname EquipCommand
 
+; "me" as default alias
+; pass alias as the main object (IDENTIFIER) for the Player -vs- the NPC
+
 Function Run(string[] arguments, Actor playerOrNpc) global
     string command = arguments[1]
     string argument = arguments[2]
