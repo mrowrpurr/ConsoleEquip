@@ -4,6 +4,11 @@ Scriptname EquipCommand
 ; pass alias as the main object (IDENTIFIER) for the Player -vs- the NPC
 
 Function Run(string[] arguments, Actor playerOrNpc) global
+    if arguments.Length < 2 || arguments[1] == ""
+        PrintUsage()
+        return
+    endIf
+
     string command = arguments[1]
     string argument = arguments[2]
 
@@ -33,7 +38,7 @@ Function Run(string[] arguments, Actor playerOrNpc) global
 EndFunction
 
 Function PrintUsage() global
-    MiscUtil.PrintConsole("Usage: equip [save|wear] [outfit name]")
+    MiscUtil.PrintConsole("Usage: e[quip] <alias> [save|wear|add|remove|aliases] [outfit name|alias]")
 EndFunction
 
 ; #todo if the actor is the Game Player then print a message and do not register

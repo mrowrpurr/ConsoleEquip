@@ -9,8 +9,14 @@ Function ListenForConsoleCommand()
     RegisterForModEvent(CustomConsoleCommands.RegisterCommand("Equip"), "OnEquipCommand")
 EndFunction
 
-Event OnEquipCommand(string eventName, string strArg, float numArg, Form sender)
-    EquipCommand.Run(StringUtil.Split(strArg, " "), GetPlayerOrNpc())
+Event OnEquipCommand(string eventName, string command, float numArg, Form sender)
+    if StringUtil.Find(command, " ") > -1
+        EquipCommand.Run(StringUtil.Split(command, " "), GetPlayerOrNpc())
+    else
+        string[] commandParts = new string[1]
+        commandParts[0] = "Equip"
+        EquipCommand.Run(StringUtil.Split(command, " "), GetPlayerOrNpc())
+    endIf
 EndEvent
 
 Actor Function GetPlayerOrNpc()
