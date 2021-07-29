@@ -10,5 +10,14 @@ Function ListenForConsoleCommand()
 EndFunction
 
 Event OnEquipCommand(string eventName, string strArg, float numArg, Form sender)
-    EquipCommand.Run(StringUtil.Split(strArg, " "), GetActorReference())
+    EquipCommand.Run(StringUtil.Split(strArg, " "), GetPlayerOrNpc())
 EndEvent
+
+Actor Function GetPlayerOrNpc()
+    Actor target = Game.GetCurrentConsoleRef() as Actor
+    if target
+        return target
+    else
+        return GetActorReference()
+    endIf
+EndFunction
