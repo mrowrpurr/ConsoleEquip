@@ -15,7 +15,7 @@ Function Run(string[] arguments, Actor playerOrNpc) global
         argument = arguments[3]
     endIf
 
-    MiscUtil.PrintConsole("command: " + command + " argument: " + argument + " playerOrNpc: " + playerOrNpc)
+    ConsoleEquipUtil.Log("command: " + command + " argument: " + argument + " playerOrNpc: " + playerOrNpc)
 
     if command == "save"
         SaveOutfit(argument, playerOrNpc)
