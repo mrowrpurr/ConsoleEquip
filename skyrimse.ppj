@@ -18,14 +18,10 @@
         <Variable Name="ImportsFolder" Value="C:\[YOUR INCLUDES FOLDER]" />
     </Variables>
     <Imports>
-        <Import>C:\Skyrim\Mods\Custom Console Commands-52964-v2-1627513859\Scripts\Source</Import>
-        <Import>C:\Skyrim\Mods\Papyrus Extender SSE - 4.4.2-22854-4-4-2-1626156020\source\scripts</Import>
-        <Import>C:\Skyrim\Mods\PapyrusUtil SE - Scripting Utility Functions-13048-3-9-1580810594\Scripts\Source</Import>
-        <Import>C:\Skyrim\Mods\SKSE64\Scripts\Source</Import>
-        <!-- <Import>C:\Skyrim\Mods\PapyrusExtender\source\scripts</Import>
+        <Import>C:\Skyrim\Mods\PapyrusExtender\source\scripts</Import>
         <Import>C:\Skyrim\Mods\PapyrusUtil\Scripts\Source</Import>
         <Import>C:\Skyrim\Mods\CustomConsoleCommands\Scripts\Source</Import>
-        <Import>C:\Skyrim\Mods\SKSE64\Scripts\Source</Import> -->
+        <Import>C:\Skyrim\Mods\SKSE64\Scripts\Source</Import>
         <Import>C:\Steam\steamapps\common\Skyrim Special Edition\Data\Scripts\Source</Import>
     </Imports>
     <Folders>

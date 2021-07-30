@@ -3,7 +3,7 @@ Scriptname EquipCommand
 ; "me" as default alias
 ; pass alias as the main object (IDENTIFIER) for the Player -vs- the NPC
 
-Function Run(string[] arguments, Actor playerOrNpc) global
+Function Run(string[] arguments, Actor playerOrNpc, ConsoleEquipPlayerScript playerScript) global
     if arguments.Length < 2 || arguments[1] == ""
         PrintUsage()
         return
@@ -32,8 +32,10 @@ Function Run(string[] arguments, Actor playerOrNpc) global
         UnregisterNpcAlias(argument, playerOrNpc)
     elseif command == "aliases"
         ListNpcAliases()
-    elseif command == "outfits"
-        ListOutfits()
+    ; elseif command == "outfits"
+        ; ListOutfits()
+    elseif command == "dress"
+        DressNpc(playerOrNpc, playerScript)
     endIf
 EndFunction
 
@@ -131,6 +133,39 @@ Function ListNpcAliases() global
     endIf
 EndFunction
 
-Function ListOutfits() global
+; Function ListOutfits() global
+; EndFunction
 
+Function DressNpc(Actor player, ConsoleEquipPlayerScript playerScript) global
+    if player == Game.GetPlayer()
+        MiscUtil.PrintConsole("You cannot dress the player")
+        return
+    endIf
+    playerScript.CurrentNpc = player
+    playerScript.RegisterForMenu("ContainerMenu")
+    playerScript.ConsoleEquipContainerInstance.Activate(playerScript.GetActorReference())
+    UI.Invoke("Console", "_global.Console.Hide")
+EndFunction
+
+Function OnMenuClose(string menuName, ConsoleEquipPlayerScript playerScript) global
+    playerScript.UnregisterForMenu("ContainerMenu")
+    if ! playerScript.CurrentNpc
+        MiscUtil.PrintConsole("Error: no reference to current actor found")
+        return
+    endIf
+
+    int numItems = playerScript.ConsoleEquipContainerInstance.GetNumItems()
+    int index = 0
+    while index < numItems
+        Form item = playerScript.ConsoleEquipContainerInstance.GetNthForm(index)
+        int itemCount = playerScript.ConsoleEquipContainerInstance.GetItemCount(item)
+        playerScript.ConsoleEquipContainerInstance.RemoveItem( \
+            item, \
+            itemCount, \
+            akOtherContainer = playerScript.CurrentNpc)
+        playerScript.CurrentNpc.EquipItem(item, abPreventRemoval = true)
+        index += 1
+    endWhile
+
+    playerScript.CurrentNpc = none
 EndFunction
