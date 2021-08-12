@@ -2,14 +2,18 @@ scriptName ConsoleEquip_ActorUtil
 
 function EquipAllForms(Actor npc, Form[] theForms) global
     int index = 0
+    bool equippedLeftHandSpell = false
     while index < theForms.Length
         Form theForm = theForms[index]
         Spell theSpell = theForm as Spell
         if theSpell && npc.HasSpell(theSpell)
-            ; TODO SPELLS
-            Debug.Trace("[ConsoleEquip] Spells not yet supported")
+            if equippedLeftHandSpell
+                npc.EquipSpell(theSpell, 1)
+            else
+                npc.EquipSpell(theSpell, 0)
+            endIf
         elseIf npc.GetItemCount(theForm) > 0
-            npc.EquipItem(theForm)
+            npc.EquipItem(theForm, abSilent = true)
         else
             Debug.Trace("[ConsoleEquip] NPC " + npc.GetActorBase().GetName() + " no longer has " + theForm.GetName())
         endIf

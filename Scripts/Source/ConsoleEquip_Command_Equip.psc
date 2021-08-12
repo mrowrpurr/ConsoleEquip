@@ -16,7 +16,7 @@ endFunction
 function OnEquipCommand(string eventName, string command, float _, Form sender) global
     string[] parsed = Parse(command)
     Actor npc = ConsoleEquip_Npcs.GetAliasByName(parsed[0])
-    ConsoleEquip_Commands.Run(npc, parsed[1], parsed[2])
+    ConsoleEquip_Commands.Run(npc, parsed[1], StringUtil.Split(parsed[2], " "))
 endFunction
 
 ; Returns a string array with three elements:

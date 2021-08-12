@@ -13,3 +13,8 @@ endFunction
 string function GetNpcAlias(Actor npc) global
     ;;;
 endFunction
+
+string function GetDisplayName(Actor npc) global
+    ; TODO
+    return npc.GetActorBase().GetName()
+endFunction

@@ -3,6 +3,16 @@ scriptName ConsoleEquip_OutfitManager
 function SaveCurrentOutfit(Actor npc, string outfitName, bool includeWeapons = false, bool includeSpells = false) global
     Debug.Trace("Save Current Outfit")
     Form[] allCurrentlyEquippedItems = ConsoleEquip_ActorUtil.GetAllCurrentlyEquippedItems(npc, includeWeapons)
+    if includeSpells
+        Spell leftHandSpell = npc.GetEquippedSpell(0)
+        if leftHandSpell
+            PapyrusUtil.PushForm(allCurrentlyEquippedItems, leftHandSpell)
+        endIf
+        Spell rightHandSpell = npc.GetEquippedSpell(1)
+        if rightHandSpell
+            PapyrusUtil.PushForm(allCurrentlyEquippedItems, rightHandSpell)
+        endIf
+    endIf
     ConsoleEquip_OutfitStorage.StoreOutfit(npc, allCurrentlyEquippedItems, outfitName)
 endFunction
 
