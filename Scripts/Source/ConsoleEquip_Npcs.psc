@@ -9,3 +9,7 @@ Actor function GetAliasByName(string npcAlias) global
         return Game.GetPlayer()
     endIf
 endFunction
+
+string function GetNpcAlias(Actor npc) global
+    ;;;
+endFunction
